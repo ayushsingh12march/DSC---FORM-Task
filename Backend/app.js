@@ -25,14 +25,17 @@ const formRouter = require('./routes/form');
 app.use('/form',formRouter)
 
 // Serve static assets if in production
-if (process.env.NODE_ENV === 'production') {
-    // Set static folder
-    app.use(express.static('frontend/build'));
+// if (process.env.NODE_ENV === 'production') {
+//     // Set static folder
+//     app.use(express.static('frontend/build'));
   
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-    });
-  }
+//     app.get('*', (req, res) => {
+//       res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+//     });
+//   }
+
+app.use(express.static(“frontend1/build”));
+res.sendFile(path.resolve(__dirname, "frontend1", “build”, “index.html”));
 
 app.listen(port,()=>{
     console.log("Server is running on port"+port);
